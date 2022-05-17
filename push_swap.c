@@ -6,31 +6,30 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:24:26 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/17 23:18:25 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/17 23:41:18 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	ft_exit(void)
 {
-	printf("Erro!\n");
+	ft_printf("Erro!\n");
 	exit(0);
 }
 
 void	show_list(t_list *lst_a, t_list *lst_b)
 {
-	printf("  A  |  B  \n-----|-----\n");
+	ft_printf("  A  |  B  \n-----|-----\n");
 	while (lst_a != NULL)
 	{
-		printf("%i    ", lst_a->num);
+		ft_printf("%i    ", lst_a->num);
 		if (lst_b != NULL)
 		{
-			printf("    %i", lst_b->num);
+			ft_printf("    %i", lst_b->num);
 			lst_b = lst_b->next;
 		}
-		printf("\n");
+		ft_printf("\n");
 		lst_a = lst_a->next;
 	}
 }
@@ -87,6 +86,8 @@ int	main(int argc, char **argv)
 gcc -g libft/ft_lstnew.c libft/ft_lstlast.c push_swap.c push_swap_utils.c libft/ft_atoi.c libft/ft_itoa.c libft/ft_str_s_str.c libft/ft_split.c
 ./a.out 1 5 12 2 3 1 4 123 123455612
 
+	ft_lst_pa(&lst_a.begin, &lst_b.begin);
+	show_list(lst_a.begin, lst_b.begin);
 
 
 */
