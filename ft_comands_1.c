@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 23:21:36 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/17 23:31:45 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/23 17:03:10 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ int	ft_ss(t_list **lstx_1, t_list **lstx_2)
 	return (1);
 }
 
-int	ft_pa(t_list **lstx_1, t_list **lstx_2)
+int	ft_pb(t_list **lstx_1, t_list **lstx_2)
 {
 	ft_lst_pa(lstx_1, lstx_2);
-	ft_printf("PA\n");
+	ft_printf("PB\n");
 	return (1);
 }
 
 int	ft_pa(t_list **lstx_1, t_list **lstx_2)
 {
 	ft_lst_pa(lstx_2, lstx_1);
-	ft_printf("PB\n");
+	ft_printf("PA\n");
 	return (1);
 }

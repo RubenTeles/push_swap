@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 23:00:05 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/17 23:43:57 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/23 17:15:09 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_list
 	struct s_list	*begin;
 	int				num;
 	struct s_list	*next;
-}	t_list;
+}	t_list;	
 
 t_list	*ft_lstnew(int num);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -40,6 +40,8 @@ char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *string);
 
+void	show_list(t_list **lst_a, t_list **lst_b);
+
 //----- Verification Number ----- ///Falta ver se os numeros sao iguais
 int		ft_str_s_str(const char *s1, const char *s2);
 
@@ -55,7 +57,7 @@ int		ft_sb(t_list **lstx_2);
 int		ft_ss(t_list **lstx_1, t_list **lstx_2);
 
 int		ft_pa(t_list **lstx_1, t_list **lstx_2);
-int		ft_pa(t_list **lstx_1, t_list **lstx_2);
+int		ft_pb(t_list **lstx_1, t_list **lstx_2);
 
 int		ft_ra(t_list **lstx_1);
 int		ft_rb(t_list **lstx_2);
@@ -64,5 +66,8 @@ int		ft_rr(t_list **lstx_1, t_list **lstx_2);
 int		ft_rra(t_list **lstx_1);
 int		ft_rrb(t_list **lstx_2);
 int		ft_rrr(t_list **lstx_1, t_list **lstx_2);
+
+//------ Logic ------
+int		verific_list(t_list *lst_a, t_list *lst_b, int len);
 
 #endif

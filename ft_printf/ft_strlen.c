@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 21:47:58 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/20 20:37:29 by rteles           ###   ########.fr       */
+/*   Created: 2021/10/24 16:02:32 by rteles            #+#    #+#             */
+/*   Updated: 2022/05/20 18:03:18 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstlast(t_list *lst)
+size_t	ft_strlen(const char *string)
 {
-	if (lst == NULL)
-		return (lst);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+	size_t	i;
+
+	i = 0;
+	while (string[i])
+		i++;
+	return (i);
 }
