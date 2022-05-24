@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 23:00:05 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/24 16:00:49 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/24 20:53:17 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,18 @@
 
 typedef struct s_swap
 {
+	int	index;
 	int	selected;
 	int	max_ra;
 	int	max_rra;
 	int	x;
 }	t_swap;
+
+typedef struct s_s_swap
+{
+	t_swap	a;
+	t_swap	b;
+}	t_s_swap;
 
 typedef struct s_list
 {
@@ -56,9 +63,9 @@ void	show_list(t_list **lst_a, t_list **lst_b);
 void	create_index(t_list *lst_a, int len, int i);
 void	ft_exit(void);
 t_swap	index_list_position(t_list **lst, int min, int max);
+t_swap	index_small_position(t_list **lst, int min, int max);
 int		is_right(t_list *list_a);
 int		is_smalest(t_list *list_a);
-
 
 //----- Verification Number -----
 int		ft_str_s_str(const char *s1, const char *s2);
@@ -89,6 +96,12 @@ int		ft_rrr(t_list **lstx_1, t_list **lstx_2, int i);
 int		verific_list(t_list *lst_a, t_list *lst_b, int len);
 void	logic_3(t_list **lst_a, t_list **lst_b, int *i);
 void	logic_5(t_list **lst_a, t_list **lst_b, int *i);
+void	logic_5_2(t_list **lst_a, t_list **lst_b, int *i);
+void	logic_100(t_list **lst_a, t_list **lst_b, int len, int *i);
+void	logic_100_1(t_list **lst_a, t_list **lst_b, t_swap *var_a, int *i);
+void	logic_100_2(t_list **lst_a, t_list **lst_b, t_s_swap *var, int *i);
+void	logic_while_rrr(t_list **lst_a, t_list **lst_b, t_s_swap *var, int *i);
+void	logic_while_rr(t_list **lst_a, t_list **lst_b, t_s_swap *var, int *i);
 
 //----- Logic Fake ----
 int		logic_previs(t_list *lst_a, t_list *lst_b);

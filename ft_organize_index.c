@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:01:44 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/24 14:34:53 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/24 21:22:34 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	index_crescent(t_list *temp, t_swap *l, int min, int max)
 	{
 		if (temp->index >= min && temp->index <= max)
 		{
+			l->index = temp->index;
 			l->max_ra = i;
 			l->max_rra = size - i;
 			if (l->max_ra <= l->max_rra)
@@ -48,6 +49,7 @@ void	index_descending(t_list *temp, t_swap *l, int min, int max)
 	{
 		if (temp->index >= min && temp->index <= max)
 		{
+			l->index = temp->index;
 			l->max_ra = i;
 			l->max_rra = size - i;
 			if (l->max_ra <= l->max_rra)

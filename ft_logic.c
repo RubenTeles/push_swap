@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:05:59 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/24 17:41:48 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/24 21:07:38 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	index_smalest(t_list **list_a, int *i, int index)
 }
 
 //-------------- OLD LOGIC --------- MAX = 12MOV.
-/*void	logic(t_list **lst_a, t_list **lst_b, int *i)
+void	logic_5_2(t_list **lst_a, t_list **lst_b, int *i)
 {
 	if ((*lst_a)->next->num > (*lst_a)->num)
 	{
@@ -98,7 +98,7 @@ void	index_smalest(t_list **list_a, int *i, int index)
 		else
 			index_smalest(lst_a, i, 0);
 	}
-}*/
+}
 
 int	logic(t_list *lst_a, t_list *lst_b, int *i)
 {
@@ -112,7 +112,7 @@ int	logic(t_list *lst_a, t_list *lst_b, int *i)
 	*i += ft_pa(&lst_a->begin, &lst_b->begin, 1);
 	*i += ft_pa(&lst_a->begin, &lst_b->begin, 1);
 	if (is_right(lst_a->begin) != 1)
-	*i += ft_sa(&lst_a->begin, 1);
+		*i += ft_sa(&lst_a->begin, 1);
 	return (1);
 }
 
@@ -128,10 +128,23 @@ int	verific_list(t_list *lst_a, t_list *lst_b, int len)
 		while (is_right(lst_a->begin) != 1)
 			logic_3(&lst_a->begin, &lst_b->begin, &i);
 	}
-	else if (len <= 5)
+	else if (len == 5)
+		return (logic(lst_a, lst_b, &i));
+	else if (len == 4 && len <= 10)
 	{
-		if (logic(lst_a, lst_b, &i) == 0)
+		while (is_right(lst_a->begin) != 1)
+			logic_5_2(&lst_a->begin, &lst_b->begin, &i);
+		while (ft_lstsize(lst_b->begin) != 0)
+			i += ft_pa(&lst_a->begin, &lst_b->begin, 1);
+	}
+	else
+	{
+		if (is_right(lst_a->begin) == 1)
 			return (0);
+		while (ft_lstsize(lst_a->begin) != 5)
+			logic_100(&lst_a->begin, &lst_b->begin, len, &i);
+		//logic(lst_a, lst_b, &i);
+		show_list(&lst_a->begin, &lst_b->begin);
 	}
 	return (0);
 }
