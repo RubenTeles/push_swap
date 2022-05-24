@@ -6,7 +6,7 @@
 #    By: rteles <rteles@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 20:42:26 by rteles            #+#    #+#              #
-#    Updated: 2022/05/24 10:01:38 by rteles           ###   ########.fr        #
+#    Updated: 2022/05/24 15:11:22 by rteles           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SOURCES	=	./libft/ft_lstnew.c \
 			ft_comands_1.c \
 			ft_comands_2.c \
 			ft_comands_3.c \
+			ft_logic_1_previs.c \
 
 OBJECTS	=	$(SOURCES:.c=.o)
 

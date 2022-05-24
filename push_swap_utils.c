@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:59:15 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/24 12:04:50 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/24 17:16:17 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	ft_lst_sa(t_list **lstx)
 		return ;
 	lst->previus = lst->next;
 	lst->next = lst->next->next;
-	lst->next->previus = lst;
+	if (lst->next != NULL)
+		lst->next->previus = lst;
 	temp = lst->previus;
 	temp->next = lst;
 	temp->previus = 0;

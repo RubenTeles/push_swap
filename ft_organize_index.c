@@ -6,50 +6,82 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:01:44 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/24 12:11:12 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/24 14:34:53 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	index_crescent(t_list *temp, t_swap *l, int min, int max)
+{
+	int	size;
+	int	i;
+
+	i = 0;
+	size = ft_lstsize(temp);
+	while (temp)
+	{
+		if (temp->index >= min && temp->index <= max)
+		{
+			l->max_ra = i;
+			l->max_rra = size - i;
+			if (l->max_ra <= l->max_rra)
+				l->selected = 1;
+			else
+				l->selected = 0;
+			break ;
+		}
+		temp = temp->next;
+		i++;
+	}
+}
+
+void	index_descending(t_list *temp, t_swap *l, int min, int max)
+{
+	int	size;
+	int	i;
+
+	size = ft_lstsize(temp);
+	temp = ft_lstlast(temp);
+	i = size - 1;
+	while (temp)
+	{
+		if (temp->index >= min && temp->index <= max)
+		{
+			l->max_ra = i;
+			l->max_rra = size - i;
+			if (l->max_ra <= l->max_rra)
+				l->selected = 1;
+			else
+				l->selected = 0;
+			break ;
+		}
+		temp = temp->previus;
+		i--;
+	}
+}
 
 t_swap	index_list_position(t_list **lst, int min, int max)
 {
 	t_swap	l_a;
 	t_swap	l_b;
 	t_list	*temp;
-	int		a;
-	int		size;
 
 	temp = *lst;
-	a = 0;
-	size = ft_lstsize(temp);
-	while (temp)
-	{
-		if (temp->index >= min && temp->index <= max && a == 0)
-		{
-			l_a.max_ra = temp->index;
-			l_a.max_rra = size - temp->index;
-			if (l_a.max_ra <= l_a.max_rra)
-			{
-				l_a.selected = 1;
-				l_a
-			}
-			else
-				l_a.selected = 0;
-			a = 1;
-		}
-		else if (temp->index >= min && temp->index <= max && a == 1)
-		{
-			l_b.max_ra = temp->index;
-			l_b.max_rra = size - temp->index;
-			if (l_b.max_ra <= l_b.max_rra)
-				l_b.selected = 1;
-			else
-				l_b.selected = 0;
-		}
-		temp = temp->next;
-	}
-	return (l_a);
+	index_crescent(temp, &l_a, min, max);
+	index_descending(temp, &l_b, min, max);
+	if (l_a.max_ra <= l_a.max_rra)
+		l_a.x = l_a.max_ra;
+	else
+		l_a.x = l_a.max_rra;
+	if (l_b.max_ra <= l_b.max_rra)
+		l_b.x = l_b.max_ra;
+	else
+		l_b.x = l_b.max_rra;
+	if (l_b.x < l_a.x)
+		return (l_b);
+	else
+		return (l_a);
 }
 
 void	organize_array(int	**index, int i, int aux)
