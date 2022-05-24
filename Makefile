@@ -6,7 +6,7 @@
 #    By: rteles <rteles@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 20:42:26 by rteles            #+#    #+#              #
-#    Updated: 2022/05/23 18:31:18 by rteles           ###   ########.fr        #
+#    Updated: 2022/05/24 10:01:38 by rteles           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ SOURCES	=	./libft/ft_lstnew.c \
 			./ft_printf/ft_strlen.c \
 			push_swap.c \
 			push_swap_utils.c \
+			ft_organize_index.c \
 			ft_logic.c \
+			ft_logic_1.c \
 			ft_comands_1.c \
 			ft_comands_2.c \
 			ft_comands_3.c \
@@ -34,7 +36,7 @@ NAME	= 	push_swap
 
 CC		=	gcc
 
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror 
 
 RM		=	rm -f
 

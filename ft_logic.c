@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:05:59 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/23 18:31:34 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/24 12:08:21 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,13 @@ int	is_smalest(t_list *list_a)
 	return (1);
 }
 
-void	index_smalest(t_list **list_a, int *i)
+void	index_smalest(t_list **list_a, int *i, int index)
 {
 	int		small;
 	t_list	*temp;
 	int		len;
-	int		index;
 
 	len = 1;
-	index = 0;
 	small = (*list_a)->num;
 	temp = (*list_a)->next;
 	while (temp)
@@ -60,14 +58,17 @@ void	index_smalest(t_list **list_a, int *i)
 		temp = temp->next;
 		len++;
 	}
-	if ((len - index) > index)
+	len -= index;
+	if (len > index)
 	{
 		while (--index >= 0)
 			*i += ft_ra(list_a);
 	}
 	else
-		while (((--len) - index) >= 0)
+	{
+		while (--len >= 0)
 			*i += ft_rra(list_a);
+	}
 }
 
 void	logic(t_list **lst_a, t_list **lst_b, int *i)
@@ -79,7 +80,7 @@ void	logic(t_list **lst_a, t_list **lst_b, int *i)
 			if (is_smalest(*lst_a))
 				*i += ft_pb(lst_a, lst_b);
 			else
-				index_smalest(lst_a, i);
+				index_smalest(lst_a, i, 0);
 		}
 		else
 			*i += ft_rra(lst_a);
@@ -94,7 +95,7 @@ void	logic(t_list **lst_a, t_list **lst_b, int *i)
 				*i += ft_ra(lst_a);
 		}
 		else
-			*i += ft_ra(lst_a);
+			index_smalest(lst_a, i, 0);
 	}
 }
 
@@ -104,20 +105,28 @@ int	verific_list(t_list *lst_a, t_list *lst_b, int len)
 
 	i = 0;
 	(void)len;
-	while (is_right(lst_a->begin) != 1)
+	if (len == 2 && (lst_a->num > lst_a->next->num))
+		i += ft_sa(&lst_a->begin);
+	else if (len == 3)
 	{
-		logic(&lst_a->begin, &lst_b->begin, &i);
+		while (is_right(lst_a->begin) != 1)
+			logic_3(&lst_a->begin, &lst_b->begin, &i);
 	}
-	while (ft_lstsize(lst_b->begin) != 0)
+	else if (len <= 5)
 	{
-		if (ft_lstsize(lst_b) > 0 && is_right(lst_a->begin) == 1)
+		while (is_right(lst_a->begin) != 1)
+			logic(&lst_a->begin, &lst_b->begin, &i);
+		while (ft_lstsize(lst_b->begin) != 0)
 			i += ft_pa(&lst_a->begin, &lst_b->begin);
 	}
+	/*show_list(&lst_a->begin, &lst_b->begin);
+	ft_printf("\n");
+	ft_printf("\n \033[0;32m------ Passos: %i ------\033[0m", i);*/
 	return (0);
 }
-
-/*		//ft_printf("\n");
-		//show_list(&lst_a->begin, &lst_b->begin);
-		//ft_printf("\n");
-		//show_list(&lst_a->begin, &lst_b->begin);
-	//ft_printf("\n ------ Passos: %i ------", i);*/
+	
+/*show_list(&lst_a->begin, &lst_b->begin);
+		ft_printf("\n");*/
+		/*show_list(&lst_a->begin, &lst_b->begin);
+		ft_printf("\n");*/
+//

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 23:00:05 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/23 17:15:09 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/24 10:38:28 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,22 @@
 # include "ft_printf/ft_printf.h"
 # include <unistd.h>
 
+typedef struct s_swap
+{
+	int	selected;
+	int	max_ra;
+	int	max_rra;
+	int	x;
+}	t_swap;
+
 typedef struct s_list
 {
 	struct s_list	*begin;
+	int				index;
 	int				num;
 	struct s_list	*next;
-}	t_list;	
+	struct s_list	*previus;
+}	t_list;
 
 t_list	*ft_lstnew(int num);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -40,9 +50,13 @@ char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *string);
 
-void	show_list(t_list **lst_a, t_list **lst_b);
+//---- Utils Funcions -----
 
-//----- Verification Number ----- ///Falta ver se os numeros sao iguais
+void	show_list(t_list **lst_a, t_list **lst_b);
+void	create_index(t_list *lst_a, int len, int i);
+void	ft_exit(void);
+
+//----- Verification Number -----
 int		ft_str_s_str(const char *s1, const char *s2);
 
 //----- Comands Function -----
@@ -69,5 +83,6 @@ int		ft_rrr(t_list **lstx_1, t_list **lstx_2);
 
 //------ Logic ------
 int		verific_list(t_list *lst_a, t_list *lst_b, int len);
+void	logic_3(t_list **lst_a, t_list **lst_b, int *i);
 
 #endif
