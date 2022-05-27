@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 23:00:05 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/24 20:53:17 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/25 22:00:38 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@
 # include <stdlib.h>
 # include "ft_printf/ft_printf.h"
 # include <unistd.h>
+
+typedef struct s_range
+{
+	int	min;
+	int	max;
+	int	len;
+	int	c;
+}	t_range;
 
 typedef struct s_swap
 {
@@ -64,6 +72,9 @@ void	create_index(t_list *lst_a, int len, int i);
 void	ft_exit(void);
 t_swap	index_list_position(t_list **lst, int min, int max);
 t_swap	index_small_position(t_list **lst, int min, int max);
+void	chosen_index_plus(t_range *range, int len);
+void	chosen_index_min_5(t_range *range, t_list *lst);
+void	chosen_index_max_5(t_range *range, t_list *lst);
 int		is_right(t_list *list_a);
 int		is_smalest(t_list *list_a);
 
@@ -100,6 +111,7 @@ void	logic_5_2(t_list **lst_a, t_list **lst_b, int *i);
 void	logic_100(t_list **lst_a, t_list **lst_b, int len, int *i);
 void	logic_100_1(t_list **lst_a, t_list **lst_b, t_swap *var_a, int *i);
 void	logic_100_2(t_list **lst_a, t_list **lst_b, t_s_swap *var, int *i);
+void	logic_100_3(t_list **lst_a, t_list **lst_b, int len, int *i);
 void	logic_while_rrr(t_list **lst_a, t_list **lst_b, t_s_swap *var, int *i);
 void	logic_while_rr(t_list **lst_a, t_list **lst_b, t_s_swap *var, int *i);
 

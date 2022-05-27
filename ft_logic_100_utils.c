@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:05:11 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/24 20:54:39 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/25 22:30:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,35 @@ t_swap	index_small_position(t_list **lst, int min, int max)
 		return (l_b);
 	else
 		return (l_a);
+}
+
+void	logic_100_3(t_list **lst_a, t_list **lst_b, int len, int *i)
+{
+	t_range			range;
+	t_s_swap		var;
+	t_list			*temp;
+
+	(void)len;
+	*i = 1;
+	temp = *lst_a;
+	chosen_index_max_5(&range, *lst_b);
+	var.b = index_list_position(lst_b, range.min, range.max);
+	if (var.b.selected == 0)
+	{
+		while (var.b.max_rra > 0)
+		{
+			*i += ft_rrb(lst_b, 1);
+			var.b.max_rra--;
+		}
+		*i += ft_pa(lst_a, lst_b, 1);
+	}
+	else
+	{
+		while (var.b.max_ra > 0)
+		{
+			*i += ft_rb(lst_b, 1);
+			var.b.max_ra--;
+		}
+		*i += ft_pa(lst_a, lst_b, 1);
+	}
 }

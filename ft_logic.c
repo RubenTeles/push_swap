@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:05:59 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/24 21:07:38 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/27 14:43:20 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_right(t_list *list_a)
 	temp = list_a;
 	while (temp->next)
 	{
-		if (temp->num > temp->next->num)
+		if (temp->index > temp->next->index)
 			return (0);
 		temp = temp->next;
 	}
@@ -104,15 +104,15 @@ int	logic(t_list *lst_a, t_list *lst_b, int *i)
 {
 	if (is_right(lst_a->begin) == 1)
 		return (0);
-	while (ft_lstsize(lst_b->begin) >= 0
-		&& ft_lstsize(lst_b->begin) < 2)
+	while (ft_lstsize(lst_a->begin) > 3
+		&& ft_lstsize(lst_a->begin) <= 5)
 		logic_5(&lst_a->begin, &lst_b->begin, i);
 	while (is_right(lst_a->begin) != 1)
 		logic_3(&lst_a->begin, &lst_b->begin, i);
+	if (lst_b->begin->index < lst_b->begin->next->index)
+		*i += ft_sb(&lst_b->begin, 1);
 	*i += ft_pa(&lst_a->begin, &lst_b->begin, 1);
 	*i += ft_pa(&lst_a->begin, &lst_b->begin, 1);
-	if (is_right(lst_a->begin) != 1)
-		*i += ft_sa(&lst_a->begin, 1);
 	return (1);
 }
 
@@ -121,6 +121,7 @@ int	verific_list(t_list *lst_a, t_list *lst_b, int len)
 	int		i;
 
 	i = 0;
+	//	show_list(&lst_a->begin, &lst_b->begin);
 	if (len == 2 && (lst_a->num > lst_a->next->num))
 		i += ft_sa(&lst_a->begin, 1);
 	else if (len == 3)
@@ -141,10 +142,123 @@ int	verific_list(t_list *lst_a, t_list *lst_b, int len)
 	{
 		if (is_right(lst_a->begin) == 1)
 			return (0);
-		while (ft_lstsize(lst_a->begin) != 5)
+		while (ft_lstsize(lst_a->begin) != 5) //is_right(lst_a->begin) != 1 || )
+		{
 			logic_100(&lst_a->begin, &lst_b->begin, len, &i);
-		//logic(lst_a, lst_b, &i);
-		show_list(&lst_a->begin, &lst_b->begin);
+			//	show_list(&lst_a->begin, &lst_b->begin);
+		}
+		if (ft_lstsize(lst_a->begin) == 5)
+			logic(lst_a, lst_b, &i);
+	//	show_list(&lst_a->begin, &lst_b->begin);
+		while (ft_lstsize(lst_b->begin) != 0)
+		{
+			if (lst_a->begin->index > lst_a->begin->next->index)
+				ft_sa(&lst_a->begin, 1);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+		}
+		if (lst_a->begin->index > lst_a->begin->next->index)
+				ft_sa(&lst_a->begin, 1);
+			/*logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);*/
+				//ft_printf("\nSIZE B: %i", ft_lstsize(lst_b->begin));
+
+
+			//show_list(&lst_a->begin, &lst_b->begin);
+			/*ft_printf("\n\n LEN: %i", len);
+			ft_printf("\n \033[0;32m------ Passos: %i ------\033[0m", i);*/
 	}
 	return (0);
 }
