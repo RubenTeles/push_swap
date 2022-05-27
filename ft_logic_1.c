@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 08:47:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/25 22:00:30 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/27 16:55:47 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	logic_5(t_list **lst_a, t_list **lst_b, int *i)
 }
 
 //----------------- Logic for 100 Number's -----------------
-void	logic_100(t_list **lst_a, t_list **lst_b, int len, int *i)
+/*void	logic_100(t_list **lst_a, t_list **lst_b, int len, int *i)
 {
 	t_range			range;
 	t_s_swap		var;
@@ -82,9 +82,38 @@ void	logic_100(t_list **lst_a, t_list **lst_b, int len, int *i)
 	chosen_index_plus(&range, len);
 	var.a = index_list_position(lst_a, range.min, range.max);
 	//	ft_printf("\nIndex = %i\n", var.a.index);
-	/*if (ft_lstsize(*lst_b) >= 2)
+	if (ft_lstsize(*lst_b) >= 2)
 	{
 		var.b = index_small_position(lst_b, 0, var.a.index);
+		if (var.b.max_rra > var.b.max_ra)
+		{
+			if (var.a.max_rra > var.a.max_ra)
+				logic_while_rr(lst_a, lst_b, &var, i);
+			else
+				logic_100_2(lst_a, lst_b, &var, i);
+		}
+		else
+		{
+			if (var.a.max_rra > var.a.max_ra)
+				logic_100_2(lst_a, lst_b, &var, i);
+			else
+				logic_while_rrr(lst_a, lst_b, &var, i);
+		}
+	}
+	logic_100_1(lst_a, lst_b, &var.a, i);
+}*/
+
+void	logic_100(t_list **lst_a, t_list **lst_b, int len, int *i)
+{
+	t_range			range;
+	t_s_swap		var;
+
+	chosen_index_plus(&range, len);
+	var.a = index_list_position(lst_a, range.min, range.max);
+	/*if (ft_lstsize(*lst_b) >= 2)
+	{
+		var.b = index_small_position(lst_b, var.a.index, var.a.index);
+				ft_printf("\nIndex A = %i Index B = %i\n", var.a.index, var.b.index);
 		if (var.b.max_rra > var.b.max_ra)
 		{
 			if (var.a.max_rra > var.a.max_ra)

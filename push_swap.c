@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:24:26 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/24 16:16:03 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/27 15:15:17 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ void	show_list(t_list **lst_a, t_list **lst_b)
 	while (temp1 != NULL || temp2 != NULL)
 	{
 		if (temp1 != NULL)
-			ft_printf("%i    ", temp1->num);
+			ft_printf("%i    ", temp1->index);
 		else
 			ft_printf("     ");
 		if (temp2 != NULL)
 		{
-			ft_printf("    %i", temp2->num);
+			ft_printf("    %i", temp2->index);
 			temp2 = temp2->next;
 		}
 		ft_printf("\n");
