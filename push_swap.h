@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 23:00:05 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/25 22:00:38 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/27 23:46:58 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_range
 	int	max;
 	int	len;
 	int	c;
+	int	dif;
 }	t_range;
 
 typedef struct s_swap
@@ -71,7 +72,9 @@ void	show_list(t_list **lst_a, t_list **lst_b);
 void	create_index(t_list *lst_a, int len, int i);
 void	ft_exit(void);
 t_swap	index_list_position(t_list **lst, int min, int max);
-t_swap	index_small_position(t_list **lst, int min, int max);
+t_swap	index_small_position(t_list **lst, int index);
+void	index_descending(t_list *temp, t_swap *l, int min, int max);
+void	index_position(t_swap *l, int index, int size, int i);
 void	chosen_index_plus(t_range *range, int len);
 void	chosen_index_min_5(t_range *range, t_list *lst);
 void	chosen_index_max_5(t_range *range, t_list *lst);
@@ -114,6 +117,7 @@ void	logic_100_2(t_list **lst_a, t_list **lst_b, t_s_swap *var, int *i);
 void	logic_100_3(t_list **lst_a, t_list **lst_b, int len, int *i);
 void	logic_while_rrr(t_list **lst_a, t_list **lst_b, t_s_swap *var, int *i);
 void	logic_while_rr(t_list **lst_a, t_list **lst_b, t_s_swap *var, int *i);
+void	logic_rfs_lst_b(t_list **lst_a, t_list **lst_b, t_range *rg, int *i);
 
 //----- Logic Fake ----
 int		logic_previs(t_list *lst_a, t_list *lst_b);

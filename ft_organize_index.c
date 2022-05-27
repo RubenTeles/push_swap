@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:01:44 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/25 18:25:56 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/28 00:14:12 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ void	index_crescent(t_list *temp, t_swap *l, int min, int max)
 	{
 		if (temp->index >= min && temp->index <= max)
 		{
-			l->index = temp->index;
+			index_position(l, temp->index, size, i);
+			/*l->index = temp->index;
 			l->max_ra = i;
 			l->max_rra = size - i;
 			if (l->max_ra <= l->max_rra)
 				l->selected = 1;
 			else
-				l->selected = 0;
+				l->selected = 0;*/
 			break ;
 		}
 		temp = temp->next;
@@ -49,13 +50,14 @@ void	index_descending(t_list *temp, t_swap *l, int min, int max)
 	{
 		if (temp->index >= min && temp->index <= max)
 		{
-			l->index = temp->index;
+			index_position(l, temp->index, size, i);
+			/*l->index = temp->index;
 			l->max_ra = i;
 			l->max_rra = size - i;
 			if (l->max_ra <= l->max_rra)
 				l->selected = 1;
 			else
-				l->selected = 0;
+				l->selected = 0;*/
 			break ;
 		}
 		temp = temp->previus;

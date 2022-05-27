@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:05:11 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/27 17:29:05 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/28 00:36:55 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,14 @@ void	chosen_index_plus(t_range *range, int len)
 	int				aux;
 	int				div;
 
+	if (len < 0)
+	{
+		i--;
+		return ;
+	}
 	i++;
-	if (len >= 125)
-		div = 12;
+	if (len > 100)
+		div = 5 + (len / 80);
 	else
 		div = 5;
 	range->len = len - 6;
@@ -36,7 +41,8 @@ void	chosen_index_plus(t_range *range, int len)
 	range->max = aux;
 	aux = c - 1;
 	range->min = (range->len / div) * aux;
-	range->len = range->max - range->min;
+	range->dif = range->max - range->min;
+	range->c = i - aux;
 		//ft_printf("\n\n Min = %i Max = %i Range = %i\n" ,range->min, range->max, range->len);//(len / 200);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:05:59 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/27 16:22:33 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/28 00:29:55 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,7 @@ int	verific_list(t_list *lst_a, t_list *lst_b, int len)
 			if (lst_a->begin->index > lst_a->begin->next->index)
 				ft_sa(&lst_a->begin, 1);
 			logic_100_3(&lst_a->begin, &lst_b->begin, len, &i);
+			//show_list(&lst_a->begin, &lst_b->begin);
 		}
 		if (lst_a->begin->index > lst_a->begin->next->index)
 			ft_sa(&lst_a->begin, 1);

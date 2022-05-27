@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 08:47:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/27 16:55:47 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/28 00:39:13 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,13 +110,12 @@ void	logic_100(t_list **lst_a, t_list **lst_b, int len, int *i)
 
 	chosen_index_plus(&range, len);
 	var.a = index_list_position(lst_a, range.min, range.max);
-	/*if (ft_lstsize(*lst_b) >= 2)
+	/*if (ft_lstsize(*lst_b) >= 2)// && (ft_lstsize(*lst_a) > (ft_lstsize(*lst_b) - range.len)))
 	{
-		var.b = index_small_position(lst_b, var.a.index, var.a.index);
-				ft_printf("\nIndex A = %i Index B = %i\n", var.a.index, var.b.index);
+		var.b = index_small_position(lst_b, var.a.index);
 		if (var.b.max_rra > var.b.max_ra)
 		{
-			if (var.a.max_rra > var.a.max_ra)
+			if (var.a.max_rra > var.a.max_ra && var.a.max_rra >= var.b.max_rra)
 				logic_while_rr(lst_a, lst_b, &var, i);
 			else
 				logic_100_2(lst_a, lst_b, &var, i);
@@ -125,13 +124,16 @@ void	logic_100(t_list **lst_a, t_list **lst_b, int len, int *i)
 		{
 			if (var.a.max_rra > var.a.max_ra)
 				logic_100_2(lst_a, lst_b, &var, i);
-			else
+			elseif (var.a.max_rra < var.a.max_ra && var.a.max_ra >= var.b.max_ra)
 				logic_while_rrr(lst_a, lst_b, &var, i);
 		}
 	}*/
 	logic_100_1(lst_a, lst_b, &var.a, i);
+	/*if (range.c == range.dif && range.max > range.dif)
+		logic_rfs_lst_b(lst_a, lst_b, &range, i);*/
 }
-
+			//	ft_printf("\nIndex A = %i Index B = %i\n", var.a.index, var.b.index);
+			//	show_list(lst_a, lst_b);
 void	logic_100_2(t_list **lst_a, t_list **lst_b, t_s_swap *var, int *i)
 {
 	int	rr;

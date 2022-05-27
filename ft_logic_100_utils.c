@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:05:11 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/25 22:30:39 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/28 00:23:51 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	logic_while_rrr(t_list **lst_a, t_list **lst_b, t_s_swap *var, int *i)
 	var->b.max_rra = max_rrb;
 }
 
-void	index_small_position_2(t_swap *l, int index, int size, int i)
+void	index_position(t_swap *l, int index, int size, int i)
 {
 	l->index = index;
 	l->max_ra = i;
@@ -67,7 +67,7 @@ void	index_small_position_2(t_swap *l, int index, int size, int i)
 		l->selected = 0;
 }
 
-t_swap	index_small_position(t_list **lst, int min, int max)
+t_swap	index_small_position(t_list **lst, int index)
 {
 	t_swap	l_a;
 	t_swap	l_b;
@@ -78,15 +78,14 @@ t_swap	index_small_position(t_list **lst, int min, int max)
 	i = 0;
 	temp = *lst;
 	size = ft_lstsize(temp);
-	l_a.x = -1;
-	l_b.x = -1;
+	l_a.index = -1;
+	l_b.index = -1;
 	while (temp)
 	{
-		if (temp->index >= min && temp->index < max && (l_a.x == -1
-				|| temp->index > l_a.index))
-			index_small_position_2(&l_a, temp->index, size, i);
-		else if (temp->index > max && temp->index > l_b.index)
-			index_small_position_2(&l_b, temp->index, size, i);
+		if (temp->index < index && temp->index > l_a.index)
+			index_position(&l_a, temp->index, size, i);
+		else if (temp->index > index && temp->index < l_b.index)
+			index_position(&l_b, temp->index, size, i);
 		temp = temp->next;
 		i++;
 	}
