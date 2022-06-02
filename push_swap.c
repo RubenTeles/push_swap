@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:24:26 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/27 15:15:17 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/30 20:57:37 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,6 @@ int	main(int argc, char **argv)
 	}
 	lst_a.begin = &lst_a;
 	lst_b.begin = NULL;
-	/*show_list(&lst_a.begin, &lst_b.begin);
-	ft_printf("\n");*/
 	verific_list(&lst_a, &lst_b, argc);
 	//ft_free(&lst_a.begin, &lst_b.begin);
 	return (0);

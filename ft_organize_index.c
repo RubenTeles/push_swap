@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:01:44 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/28 00:14:12 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/30 17:19:16 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,6 @@ void	index_crescent(t_list *temp, t_swap *l, int min, int max)
 		if (temp->index >= min && temp->index <= max)
 		{
 			index_position(l, temp->index, size, i);
-			/*l->index = temp->index;
-			l->max_ra = i;
-			l->max_rra = size - i;
-			if (l->max_ra <= l->max_rra)
-				l->selected = 1;
-			else
-				l->selected = 0;*/
 			break ;
 		}
 		temp = temp->next;
@@ -51,13 +44,6 @@ void	index_descending(t_list *temp, t_swap *l, int min, int max)
 		if (temp->index >= min && temp->index <= max)
 		{
 			index_position(l, temp->index, size, i);
-			/*l->index = temp->index;
-			l->max_ra = i;
-			l->max_rra = size - i;
-			if (l->max_ra <= l->max_rra)
-				l->selected = 1;
-			else
-				l->selected = 0;*/
 			break ;
 		}
 		temp = temp->previus;
@@ -74,14 +60,6 @@ t_swap	index_list_position(t_list **lst, int min, int max)
 	temp = *lst;
 	index_crescent(temp, &l_a, min, max);
 	index_descending(temp, &l_b, min, max);
-	if (l_a.max_ra <= l_a.max_rra)
-		l_a.x = l_a.max_ra;
-	else
-		l_a.x = l_a.max_rra;
-	if (l_b.max_ra <= l_b.max_rra)
-		l_b.x = l_b.max_ra;
-	else
-		l_b.x = l_b.max_rra;
 	if (l_b.x < l_a.x)
 		return (l_b);
 	else

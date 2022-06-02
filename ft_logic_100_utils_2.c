@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:05:11 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/28 00:37:28 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/30 19:22:18 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ t_swap	index_max_position(t_list **lst, int min, int max)
 	int		aux;
 	t_list	*temp;
 
-	i = 0;
 	temp = *lst;
 	size = ft_lstsize(temp);
 	temp = ft_lstlast(temp);
+	i = size - 1;
 	l_b.index = -1;
 	while (temp)
 	{
@@ -47,17 +47,20 @@ void	logic_rfs_lst_b(t_list **lst_a, t_list **lst_b, t_range *rg, int *i)
 {
 	t_s_swap	var;
 
+	(void)lst_a;
+	rg->min++;
 	var.b = index_max_position(lst_b, rg->min, rg->max);
 	if (var.b.index == -1)
 		return ;
-	chosen_index_plus(rg, rg->len);
-	index_descending(*lst_a, &var.a, rg->min, rg->max);
+	if (rg->max + rg->dif < rg->len)
+		index_descending(*lst_a, &var.a, rg->min + rg->len, rg->max + rg->len);
 	if (var.b.max_rra >= var.a.max_rra)
 	{
 		logic_while_rrr(lst_a, lst_b, &var, i);
 		return ;
 	}
-	chosen_index_plus(rg, -1);
 	while (--var.b.max_rra >= 0)
-		ft_rb(lst_b, 1);
+		*i = ft_rrb(lst_b, 1);
+	//ft_printf("\n\n Index B: %i Max: %i Min: %i \n\n", var.b.index, rg->max, rg->min);
+	//ft_printf("\n\n RRA: %i RRB: %i \n\n", var.a.max_rra, var.b.max_rra);
 }

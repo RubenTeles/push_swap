@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 19:05:11 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/28 00:23:51 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/01 23:26:40 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,18 @@ void	index_position(t_swap *l, int index, int size, int i)
 	l->max_ra = i;
 	l->max_rra = size - i;
 	if (l->max_ra <= l->max_rra)
+	{
+		l->x = l->max_ra;
 		l->selected = 1;
+	}
 	else
+	{
+		l->x = l->max_rra;
 		l->selected = 0;
+	}
 }
 
-t_swap	index_small_position(t_list **lst, int index)
+/*void	index_small_position_b(t_list **lst_b, t_swap *swp_a, t_s_swap *l)
 {
 	t_swap	l_a;
 	t_swap	l_b;
@@ -76,20 +82,50 @@ t_swap	index_small_position(t_list **lst, int index)
 	int		i;
 
 	i = 0;
-	temp = *lst;
+	temp = *lst_b;
 	size = ft_lstsize(temp);
 	l_a.index = -1;
-	l_b.index = -1;
+	l_b.index = 2147483647;
 	while (temp)
 	{
-		if (temp->index < index && temp->index > l_a.index)
+		if (temp->index < swp_a->index && temp->index > l_a.index)
 			index_position(&l_a, temp->index, size, i);
-		else if (temp->index > index && temp->index < l_b.index)
+		else if (temp->index > swp_a->index && temp->index <= l_b.index)
 			index_position(&l_b, temp->index, size, i);
 		temp = temp->next;
 		i++;
 	}
-	if (l_a.x == -1)
+	if (l_a.index == -1)
+		swap_postion(l, &l_b, swp_a);
+	else
+		swap_postion(l, &l_a, swp_a);
+}*/
+
+t_swap	index_small_position(t_list **lst_b, int index)
+{
+	t_swap	l_a;
+	t_swap	l_b;
+	t_list	*temp;
+	int		size;
+	int		i;
+
+	i = 0;
+	temp = *lst_b;
+	size = ft_lstsize(temp);
+	l_a.index = -1;
+	l_b.index = 2147483647;
+	while (temp)
+	{
+		if (temp->index < index && temp->index > l_a.index)
+			index_position(&l_a, temp->index, size, i);
+		else if (temp->index > index && temp->index <= l_b.index)
+			index_position(&l_b, temp->index, size, i);
+		temp = temp->next;
+		i++;
+	}
+	//if (index - l_a.index > l_b.index - index || l_a.index == -1)
+	//if (l_a.index == -1)
+	if (l_a.x > l_b.x || l_a.index == -1)
 		return (l_b);
 	else
 		return (l_a);
