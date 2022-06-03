@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 08:47:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/06/03 18:19:52 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/03 23:04:16 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 //----------------- Logic for 3 Number's -----------------
 void	logic_3(t_list **lst_a, t_list **lst_b, int *i)
 {
-	(void)lst_b;
 	if ((*lst_a)->num > (*lst_a)->next->num)
 	{
 		if ((*lst_a)->num > (*lst_a)->next->next->num)
 				*i += ft_ra(lst_a, 1);
 		else
 		{
-			if (ft_lstsize(*lst_b) == 2 && (*lst_b)->num < (*lst_b)->next->num)
-				*i += ft_ss(lst_a, lst_b, 1);
+			if (lst_b != NULL && ft_lstsize(*lst_b) == 2
+				&& (*lst_b)->num < (*lst_b)->next->num)
+					*i += ft_ss(lst_a, lst_b, 1);
 			else
 				*i += ft_sa(lst_a, 1);
 		}
@@ -34,7 +34,8 @@ void	logic_3(t_list **lst_a, t_list **lst_b, int *i)
 				*i += ft_rra(lst_a, 1);
 		else
 		{
-			if (ft_lstsize(*lst_b) == 2 && (*lst_b)->num < (*lst_b)->next->num)
+			if (lst_b != NULL && ft_lstsize(*lst_b) == 2
+				&& (*lst_b)->num < (*lst_b)->next->num)
 				*i += ft_ss(lst_a, lst_b, 1);
 			else
 				*i += ft_sa(lst_a, 1);
@@ -42,10 +43,10 @@ void	logic_3(t_list **lst_a, t_list **lst_b, int *i)
 	}
 }
 
-void	logic_number_3(t_list *lst_a, t_list *lst_b, int *i)
+void	logic_number_3(t_list **lst_a, t_list **lst_b, int *i)
 {
-	while (is_right(lst_a->begin) != 1)
-		logic_3(&lst_a->begin, &lst_b->begin, i);
+	while (is_right((*lst_a)->begin) != 1)
+		logic_3(&(*lst_a)->begin, &(*lst_b)->begin, i);
 }
 
 //-------------- LOGIC FOR EXCEPTIONS - UTILS --------------//

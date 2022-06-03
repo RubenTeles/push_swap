@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:05:59 by rteles            #+#    #+#             */
-/*   Updated: 2022/06/03 17:44:31 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/03 23:12:54 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,21 @@ void	logic_5(t_list **lst_a, t_list **lst_b, int *i)
 }
 
 //----------------- Logic for 5 Number's -----------------//
-void	logic_number_5(t_list *lst_a, t_list *lst_b, int *i)
+void	logic_number_5(t_list **lst_a, t_list **lst_b, int *i)
 {
-	if (is_right(lst_a->begin) == 1)
+	if (is_right((*lst_a)->begin) == 1)
 		return ;
-	while (ft_lstsize(lst_a->begin) > 3
-		&& ft_lstsize(lst_a->begin) <= 5)
-		logic_5(&lst_a->begin, &lst_b->begin, i);
-	while (is_right(lst_a->begin) != 1)
-		logic_3(&lst_a->begin, &lst_b->begin, i);
-	if (lst_b->begin->index < lst_b->begin->next->index)
-		*i += ft_sb(&lst_b->begin, 1);
-	*i += ft_pa(&lst_a->begin, &lst_b->begin, 1);
-	*i += ft_pa(&lst_a->begin, &lst_b->begin, 1);
+	while (ft_lstsize((*lst_a)->begin) > 3
+		&& ft_lstsize((*lst_a)->begin) <= 5)
+		logic_5(&(*lst_a)->begin, &(*lst_b)->begin, i);
+	while (is_right((*lst_a)->begin) != 1)
+		logic_3(&(*lst_a)->begin, &(*lst_b)->begin, i);
+	if ((*lst_b) != NULL)
+	{
+		if((*lst_b)->begin->index < (*lst_b)->begin->next->index)
+			*i += ft_sb(&(*lst_b)->begin, 1);
+	}
+		
+	*i += ft_pa(&(*lst_a)->begin, &(*lst_b)->begin, 1);
+	*i += ft_pa(&(*lst_a)->begin, &(*lst_b)->begin, 1);
 }

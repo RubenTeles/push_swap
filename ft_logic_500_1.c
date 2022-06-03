@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_logic_500.c                                     :+:      :+:    :+:   */
+/*   ft_logic_500_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 08:47:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/06/03 18:29:26 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/03 20:25:38 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,16 +95,16 @@ void	logic_500(t_list **lst_a, t_list **lst_b, int len, int *i)
 }
 
 //----------------- Logic for 100 and 500 Number's -----------------//
-void	logic_number_100_500(t_list *lst_a, t_list *lst_b, int len, int *i)
+void	logic_number_100_500(t_list **lst_a, t_list **lst_b, int len, int *i)
 {
-	if (is_right(lst_a->begin) == 1)
+	if (is_right((*lst_a)->begin) == 1)
 		return ;
-	while (ft_lstsize(lst_a->begin) != 5 && is_right(lst_a->begin) != 1)
-		logic_500(&lst_a->begin, &lst_b->begin, len, i);
-	if (ft_lstsize(lst_a->begin) == 5)
+	while (ft_lstsize((*lst_a)->begin) != 5 && is_right((*lst_a)->begin) != 1)
+		logic_500(&(*lst_a)->begin, &(*lst_b)->begin, len, i);
+	if (ft_lstsize((*lst_a)->begin) == 5)
 		logic_number_5(lst_a, lst_b, i);
-	while (ft_lstsize(lst_b->begin) != 0)
-		logic_500_b(&lst_a->begin, &lst_b->begin, len, i);
-	while (is_right(lst_a->begin) != 1)
-		first_begin(&lst_a->begin, &lst_b->begin, i);
+	while (ft_lstsize((*lst_b)->begin) != 0)
+		logic_500_b(&(*lst_a)->begin, &(*lst_b)->begin, len, i);
+	while (is_right((*lst_a)->begin) != 1)
+		first_begin(&(*lst_a)->begin, &(*lst_b)->begin, i);
 }

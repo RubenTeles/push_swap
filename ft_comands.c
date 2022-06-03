@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   ft_comands.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:59:15 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/30 16:26:25 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/03 23:39:59 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,23 @@ void	ft_lst_pa(t_list **lstx_1, t_list **lstx_2)
 	t_list	*temp1;
 	t_list	*temp2;
 	t_list	*lst_1;
-	t_list	*lst_2;
 
 	lst_1 = *lstx_1;
 	temp1 = lst_1;
 	temp2 = lst_1->next;
-	if (*lstx_2 == NULL)
+	if ((*lstx_2)->index == -1)
 	{
-		temp1 = ft_lstnew(temp1->num);
+		temp1->num = lst_1->num;
 		temp1->index = lst_1->index;
 		temp1->previus = 0;
+		temp1->next = 0;
 	}
 	else
 	{
-		lst_2 = *lstx_2;
-		temp1->next = lst_2;
-		if (lst_2 != 0)
-			lst_2->previus = temp1;
+		lst_1 = *lstx_2;
+		temp1->next = lst_1;
+		if (lst_1 != 0)
+			lst_1->previus = temp1;
 	}
 	*lstx_2 = temp1;
 	if (temp2 != 0)

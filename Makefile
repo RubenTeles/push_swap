@@ -6,11 +6,12 @@
 #    By: rteles <rteles@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 20:42:26 by rteles            #+#    #+#              #
-#    Updated: 2022/06/03 18:38:21 by rteles           ###   ########.fr        #
+#    Updated: 2022/06/03 23:51:28 by rteles           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SOURCES	=	./libft/ft_lstnew.c \
+			./libft/ft_lstfirst.c \
 			./libft/ft_lstlast.c \
 			./libft/ft_atoi.c \
 			./libft/ft_itoa.c \
@@ -40,7 +41,7 @@ OBJECTS	=	$(SOURCES:.c=.o)
 
 NAME	= 	push_swap
 
-CC		=	gcc
+CC		=	gcc -fsanitize=address
 
 CFLAGS	=	-Wall -Wextra -Werror 
 
