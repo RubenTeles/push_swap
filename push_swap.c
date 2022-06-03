@@ -6,70 +6,36 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:24:26 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/30 20:57:37 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/03 19:59:36 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_free(t_list **lst_a, t_list **lst_b)
+void	ft_free(t_list *lst)
 {
-	t_list	*temp1;
-	t_list	*temp2;
 	t_list	*temp;
+	int		i;
 
-	temp1 = *lst_a;
-	temp2 = *lst_b;
-	while (*lst_a != NULL || *lst_b != NULL)
+	while (lst->previus)
+		lst = lst->previus;
+	i = ft_lstsize(lst);
+	while (--i >= 0)
 	{
-		if (temp2 != NULL)
-		{
-			temp = temp2;
-			if (temp2 != NULL)
-				free(temp2);
-			temp2 = temp->next;
-		}
-		if (temp1 != NULL)
-		{
-			temp = temp1;
-			if (temp1 != NULL)
-				free(temp1);
-			temp1 = temp->next;
-		}
+		if (lst->next != NULL)
+			temp = lst->next;
+		free(lst);
+		if (temp != NULL)
+			lst = temp;
+		else
+			lst = NULL;
 	}
-	*lst_a = temp1;
-	*lst_b = temp2;
 }
 
 void	ft_exit(void)
 {
 	ft_printf("Error\n");
 	exit(0);
-}
-
-void	show_list(t_list **lst_a, t_list **lst_b)
-{
-	t_list	*temp1;
-	t_list	*temp2;
-
-	temp1 = *lst_a;
-	temp2 = *lst_b;
-	ft_printf("  A  |  B  \n-----|-----\n");
-	while (temp1 != NULL || temp2 != NULL)
-	{
-		if (temp1 != NULL)
-			ft_printf("%i    ", temp1->index);
-		else
-			ft_printf("     ");
-		if (temp2 != NULL)
-		{
-			ft_printf("    %i", temp2->index);
-			temp2 = temp2->next;
-		}
-		ft_printf("\n");
-		if (temp1 != NULL)
-			temp1 = temp1->next;
-	}
 }
 
 void	put_in_list(char **str, t_list *lst_a, t_list *lst_b, int len)
@@ -121,12 +87,13 @@ int	main(int argc, char **argv)
 	}
 	lst_a.begin = &lst_a;
 	lst_b.begin = NULL;
-	verific_list(&lst_a, &lst_b, argc);
-	//ft_free(&lst_a.begin, &lst_b.begin);
+	logic(&lst_a, &lst_b, argc);
+	ft_free(&lst_a);
+	ft_free(&lst_b);
 	return (0);
 }
 
-/*
+/*	//
 ./a.out 1 5 12 2 3 1 4 123 123455612
 show_list(&lst_a.begin, &lst_b.begin);
 	ft_lst_pa(&lst_a.begin, &lst_b.begin);
