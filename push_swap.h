@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 23:00:05 by rteles            #+#    #+#             */
-/*   Updated: 2022/06/06 15:18:09 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/06 19:30:10 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include "ft_printf/ft_printf.h"
+# include "get_next_line/get_next_line.h"
 # include <unistd.h>
 
 typedef struct s_range
@@ -55,22 +56,20 @@ typedef struct s_list
 	struct s_list	*previus;
 }	t_list;
 
+//---- LIBFT -----
+
 t_list	*ft_lstnew(int num);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstfirst(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
-
+int		ft_strncmp(const char *str1, const char *str2, size_t n);
 long	ft_atoi(const char *str);
 char	*ft_itoa(int n);
-
 char	**ft_split(char const *s, char c);
-size_t	ft_strlen(const char *string);
 
 //---- Utils Funcions -----
 
-void	show_list(t_list **lst_a, t_list **lst_b);
 void	create_index(t_list *lst_a, int len, int i);
-void	ft_exit(void);
 t_swap	index_list_position(t_list **lst, int min, int max);
 void	index_descending(t_list *temp, t_swap *l, int min, int max);
 void	index_position(t_swap *l, int index, int size, int i);
@@ -130,5 +129,9 @@ void	swap_postion(t_s_swap *l, t_swap *l_a, t_swap *l_b);
 
 //------ Checker ------//
 void	show_list(t_list **lst_a, t_list **lst_b);
+void	put_in_list(char **str, t_list **lst_a, t_list **lst_b, int len);
+void	ft_verification(char **str, int i);
+void	ft_exit(int option);
+void	ft_free(t_list **lst);
 
 #endif

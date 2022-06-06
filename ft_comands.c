@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:59:15 by rteles            #+#    #+#             */
-/*   Updated: 2022/06/06 15:09:04 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/06 18:16:30 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,19 @@ void	ft_lst_pa(t_list **lstx_1, t_list **lstx_2)
 	t_list	*temp1;
 	t_list	*temp2;
 
-	temp1 = (*lstx_1)->begin->next;
-	temp2 = 0;
+	if ((*lstx_1)->begin->next != NULL)
+		temp1 = (*lstx_1)->begin->next;
+	else
+		temp1 = NULL;
+	temp2 = (*lstx_1)->begin;
 	if (*lstx_2 == 0)
-	{
-		temp2 = (*lstx_1)->begin;
 		temp2->next = 0;
-		temp2->begin = temp2;
-	}
 	else
 	{
-		temp2 = (*lstx_1)->begin;
 		temp2->next = (*lstx_2)->begin;
 		temp2->next->previus = temp2;
-		temp2->begin = temp2;
 	}
+	temp2->begin = temp2;
 	if (temp1 != NULL)
 	{
 		temp1->previus = 0;

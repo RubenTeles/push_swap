@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:05:59 by rteles            #+#    #+#             */
-/*   Updated: 2022/06/06 15:25:01 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/06 16:16:53 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,13 @@ int	logic(t_list **lst_a, t_list **lst_b, int len)
 		logic_exceptions(lst_a, lst_b, &i);
 	else
 		logic_number_100_500(lst_a, lst_b, len, &i);
-	show_list(lst_a, lst_b);
 	return (0);
 }
 	//ft_printf("\n \033[0;32m------ Passos: %i ------\033[0m", i);	
 //	ft_printf("\nSIZE: %i", ft_lstsize(lst_a->begin));
 			//show_list(&lst_a->begin, &lst_b->begin);
 			/*ft_printf("\n\n LEN: %i", len);*/
-			//	
+			//	show_list(lst_a, lst_b);
 	/*
 	ft_printf("\n");
 	ft_printf("\n \033[0;32m------ Passos: %i ------\033[0m", i);*/

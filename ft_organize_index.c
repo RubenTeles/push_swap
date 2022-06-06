@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 10:01:44 by rteles            #+#    #+#             */
-/*   Updated: 2022/06/04 15:02:39 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/06 16:12:50 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	organize_array(int	**index, int i, int aux)
 				o[aux] = a;
 			}
 			else if (o[i] == o[aux])
-				ft_exit();
+				ft_exit(1);
 		}
 	}
 	*index = o;
@@ -98,7 +98,7 @@ void	create_index(t_list *lst_a, int len, int i)
 	temp = lst_a;
 	index = (int *)malloc(sizeof(int) * len);
 	if (!index)
-		ft_exit();
+		ft_exit(1);
 	while (temp)
 	{
 		index[++i] = temp->num;

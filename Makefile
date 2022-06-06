@@ -6,7 +6,7 @@
 #    By: rteles <rteles@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 20:42:26 by rteles            #+#    #+#              #
-#    Updated: 2022/06/06 15:19:56 by rteles           ###   ########.fr        #
+#    Updated: 2022/06/06 19:54:42 by rteles           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,14 @@ SOURCES	=	./libft/ft_lstnew.c \
 			./libft/ft_itoa.c \
 			./libft/ft_split.c \
 			./libft/ft_lstsize.c \
+			./libft/ft_strncmp.c \
 			./libft/ft_str_s_str.c \
+			./get_next_line/get_next_line.c \
+			./get_next_line/get_next_line_utils.c \
 			./ft_printf/ft_printf.c \
 			./ft_printf/ft_printf_utils.c \
 			./ft_printf/ft_print_unsigned_decimal.c \
-			./ft_printf/ft_strlen.c \
-			push_swap.c \
+			push_swap_utils.c \
 			ft_organize_index.c \
 			ft_comands.c \
 			ft_comands_1.c \
@@ -36,34 +38,40 @@ SOURCES	=	./libft/ft_lstnew.c \
 			ft_logic_500_1.c \
 			ft_logic_500_2.c \
 			ft_logic_500_3.c \
-			ft_checker.c
-			
+
+PUSH_SWAP_SRC = push_swap.c
+
+BONUS_SRC =	ft_checker.c
 
 OBJECTS	=	$(SOURCES:.c=.o)
 
 NAME	= 	push_swap
 
-CC		=	gcc #-fsanitize=address
+CHECKER	=	checker
+
+CC		=	gcc -fsanitize=address
 
 CFLAGS	=	-Wall -Wextra -Werror 
 
 RM		=	rm -f
 
-AR		= ar -rcs
-
 all: $(NAME)
 
-$(NAME) : $(OBJECTS)
-	$(CC) -g $(OBJECTS) -o $(NAME)
+bonus: $(OBJECTS) ft_checker.o
+	$(CC) -g $(OBJECTS) ft_checker.o -o $(CHECKER)
+
+$(NAME) : $(OBJECTS) push_swap.o
+	$(CC) -g $(OBJECTS) push_swap.o -o $(NAME)
 
 %.o: %.c
 	@$(CC) -g $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJECTS)
+	$(RM) $(OBJECTS) ft_checker.o push_swap.o
 	
-fclean: clean
+fclean: clean 
+	$(RM) $(NAME)
 
-re:		fclean $(NAME)
+re:		fclean $(NAME) 
 
-.PHONY: $(NAME) all clean fclean re
+.PHONY: $(NAME) all clean fclean re bonus
