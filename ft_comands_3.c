@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 23:21:36 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/24 15:39:30 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/04 18:25:07 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_rra(t_list **lstx_1, int i)
 {
-	ft_lst_rra(lstx_1);
+	ft_lst_rra(&(*lstx_1)->begin);
 	if (i == 1)
 		ft_printf("rra\n");
 	return (1);
@@ -22,7 +22,7 @@ int	ft_rra(t_list **lstx_1, int i)
 
 int	ft_rrb(t_list **lstx_2, int i)
 {
-	ft_lst_rra(lstx_2);
+	ft_lst_rra(&(*lstx_2)->begin);
 	if (i == 1)
 		ft_printf("rrb\n");
 	return (1);
@@ -30,8 +30,8 @@ int	ft_rrb(t_list **lstx_2, int i)
 
 int	ft_rrr(t_list **lstx_1, t_list **lstx_2, int i)
 {
-	ft_lst_rra(lstx_1);
-	ft_lst_rra(lstx_2);
+	ft_lst_rra(&(*lstx_1)->begin);
+	ft_lst_rra(&(*lstx_2)->begin);
 	if (i == 1)
 		ft_printf("rrr\n");
 	return (1);

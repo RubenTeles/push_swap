@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:59:15 by rteles            #+#    #+#             */
-/*   Updated: 2022/06/03 23:39:59 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/06 15:09:04 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,29 @@ void	ft_lst_pa(t_list **lstx_1, t_list **lstx_2)
 {
 	t_list	*temp1;
 	t_list	*temp2;
-	t_list	*lst_1;
 
-	lst_1 = *lstx_1;
-	temp1 = lst_1;
-	temp2 = lst_1->next;
-	if ((*lstx_2)->index == -1)
+	temp1 = (*lstx_1)->begin->next;
+	temp2 = 0;
+	if (*lstx_2 == 0)
 	{
-		temp1->num = lst_1->num;
-		temp1->index = lst_1->index;
-		temp1->previus = 0;
-		temp1->next = 0;
+		temp2 = (*lstx_1)->begin;
+		temp2->next = 0;
+		temp2->begin = temp2;
 	}
 	else
 	{
-		lst_1 = *lstx_2;
-		temp1->next = lst_1;
-		if (lst_1 != 0)
-			lst_1->previus = temp1;
+		temp2 = (*lstx_1)->begin;
+		temp2->next = (*lstx_2)->begin;
+		temp2->next->previus = temp2;
+		temp2->begin = temp2;
 	}
-	*lstx_2 = temp1;
-	if (temp2 != 0)
-		temp2->previus = 0;
-	*lstx_1 = temp2;
+	if (temp1 != NULL)
+	{
+		temp1->previus = 0;
+		temp1->begin = temp1;
+	}
+	*lstx_1 = temp1;
+	*lstx_2 = temp2;
 }
 /* ------- RA / RB ------- 	1 -> U	*/
 

@@ -6,13 +6,13 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 18:33:00 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/17 10:35:33 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/04 15:36:07 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int			i;
 	int			s;
@@ -33,9 +33,9 @@ int	ft_atoi(const char *str)
 	{
 		n = n * 10 + (str[i] - '0');
 		if (n * s > 2147483647)
-			return (-1);
+			return (n * s);
 		else if (n * s < -2147483648)
-			return (0);
+			return (n * s);
 		i++;
 	}
 	return (n * s);

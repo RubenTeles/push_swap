@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:05:59 by rteles            #+#    #+#             */
-/*   Updated: 2022/06/03 23:12:54 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/04 18:56:21 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,8 @@ void	logic_5(t_list **lst_a, t_list **lst_b, int *i)
 	t_swap	list_a;
 	t_range	range;
 
-	(void)lst_b;
-	chosen_index_min_5(&range, *lst_a);
-	list_a = index_list_position(lst_a, range.min, range.max);
+	chosen_index_min_5(&range, (*lst_a)->begin);
+	list_a = index_list_position(&(*lst_a)->begin, range.min, range.max);
 	if (list_a.selected == 0)
 	{
 		while (list_a.max_rra > 0)
@@ -77,15 +76,14 @@ void	logic_number_5(t_list **lst_a, t_list **lst_b, int *i)
 		return ;
 	while (ft_lstsize((*lst_a)->begin) > 3
 		&& ft_lstsize((*lst_a)->begin) <= 5)
-		logic_5(&(*lst_a)->begin, &(*lst_b)->begin, i);
+		logic_5(lst_a, lst_b, i);
 	while (is_right((*lst_a)->begin) != 1)
-		logic_3(&(*lst_a)->begin, &(*lst_b)->begin, i);
+		logic_3(lst_a, lst_b, i);
 	if ((*lst_b) != NULL)
 	{
-		if((*lst_b)->begin->index < (*lst_b)->begin->next->index)
-			*i += ft_sb(&(*lst_b)->begin, 1);
+		if ((*lst_b)->begin->index < (*lst_b)->begin->next->index)
+			*i += ft_sb(lst_b, 1);
 	}
-		
-	*i += ft_pa(&(*lst_a)->begin, &(*lst_b)->begin, 1);
-	*i += ft_pa(&(*lst_a)->begin, &(*lst_b)->begin, 1);
+	*i += ft_pa(lst_a, lst_b, 1);
+	*i += ft_pa(lst_a, lst_b, 1);
 }

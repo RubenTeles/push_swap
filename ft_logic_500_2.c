@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 08:47:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/06/03 18:00:18 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/04 19:25:19 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,20 @@ void	index_logic_position(t_list **l_a, t_list **l_b, t_s_swap *l, int len)
 
 	i = 0;
 	(void)len;
+	*l_b = ft_lstfirst(*l_b);
 	temp_begin = *l_b;
 	size = ft_lstsize(temp_begin);
 	swap_start(l);
 	while (temp_begin)
 	{
 		index_position(&lb, temp_begin->index, size, i);
+		*l_a = ft_lstfirst(*l_a);
 		index_small_position_a(l_a, &lb, l);
 		temp_begin = temp_begin->next;
 		i++;
 	}
+	*l_a = ft_lstfirst(*l_a);
+	*l_b = ft_lstfirst(*l_b);
 }
 
 void	choose_if_500_b(t_list **lst_a, t_list **lst_b, t_s_swap *var, int *i)
@@ -81,7 +85,7 @@ void	logic_500_b(t_list **lst_a, t_list **lst_b, int len, int *i)
 	t_s_swap		var;
 
 	(void)len;
-	index_logic_position(lst_a, lst_b, &var, 9);
+	index_logic_position(&(*lst_a)->begin, &(*lst_b)->begin, &var, 9);
 	if (var.select == 1)
 		logic_while_rr(lst_a, lst_b, &var, i);
 	else if (var.select == 2)

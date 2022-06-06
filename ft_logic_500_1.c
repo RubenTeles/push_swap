@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 08:47:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/06/03 20:25:38 by rteles           ###   ########.fr       */
+/*   Updated: 2022/06/06 14:56:31 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	first_begin(t_list **lst_a, t_list **lst_b, int *i)
 	t_swap	list_a;
 
 	(void)lst_b;
-	list_a = index_list_position(lst_a, 0, 0);
+	list_a = index_list_position(&(*lst_a)->begin, 0, 0);
 	if (list_a.selected == 0)
 	{
 		while (list_a.max_rra > 0)
@@ -74,7 +74,7 @@ void	logic_500(t_list **lst_a, t_list **lst_b, int len, int *i)
 	t_s_swap		var;
 
 	chosen_index_plus(&range, len);
-	var.a = index_list_position_500(lst_a, range.min, range.max);
+	var.a = index_list_position_500(&(*lst_a)->begin, range.min, range.max);
 	if (var.a.selected == 0)
 	{
 		while (var.a.max_rra > 0)
@@ -100,11 +100,11 @@ void	logic_number_100_500(t_list **lst_a, t_list **lst_b, int len, int *i)
 	if (is_right((*lst_a)->begin) == 1)
 		return ;
 	while (ft_lstsize((*lst_a)->begin) != 5 && is_right((*lst_a)->begin) != 1)
-		logic_500(&(*lst_a)->begin, &(*lst_b)->begin, len, i);
+		logic_500(lst_a, lst_b, len, i);
 	if (ft_lstsize((*lst_a)->begin) == 5)
 		logic_number_5(lst_a, lst_b, i);
-	while (ft_lstsize((*lst_b)->begin) != 0)
-		logic_500_b(&(*lst_a)->begin, &(*lst_b)->begin, len, i);
+	while (*lst_b != 0)
+		logic_500_b(lst_a, lst_b, len, i);
 	while (is_right((*lst_a)->begin) != 1)
-		first_begin(&(*lst_a)->begin, &(*lst_b)->begin, i);
+		first_begin(lst_a, lst_b, i);
 }
